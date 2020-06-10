@@ -10,7 +10,7 @@ export default class Notes extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 From Notes
             </div>
         );
