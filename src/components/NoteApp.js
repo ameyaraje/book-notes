@@ -13,6 +13,30 @@ export default class NoteApp extends React.Component {
         };
     };
 
+    componentDidMount() {
+        try {
+            const json = localStorage.getItem('bookNotes');
+            const bookNotes = JSON.parse(json);
+
+            if (bookNotes) {
+                this.setState({
+                    bookNotes: bookNotes
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.bookNotes.length !== this.state.bookNotes.length) {
+            const json = JSON.stringify(this.state.bookNotes);
+            localStorage.setItem('bookNotes', json)
+        }
+    };
+
+    componentWillUnmount() {};
+
     handleAddBook = (bookNote) => {
         
         this.setState((prevState) => {
