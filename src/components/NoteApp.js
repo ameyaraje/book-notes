@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
-import AddNote from './AddNote';
-import Notes from './Notes';
+import AddBook from './AddBook';
+import Books from './Books';
 
 export default class NoteApp extends React.Component {
 
@@ -13,20 +13,33 @@ export default class NoteApp extends React.Component {
         };
     };
 
-    handleAddNote = (note) => {
+    handleAddBook = (bookNote) => {
+        
         this.setState((prevState) => {
             return {
-                bookNotes: prevState.bookNotes.concat(note)
+                bookNotes: prevState.bookNotes.concat(bookNote)
+            };
+        });
+    };
+
+    handleDeleteBook = (bookNoteToRemove) => {
+        this.setState((prevState) => {
+            return {
+                bookNotes: prevState.bookNotes.filter((bookNote) => {
+                    return bookNoteToRemove !== bookNote
+                })
             };
         });
     };
 
     render() {
+        const bookNotes = this.state.bookNotes;
+
         return (
             <div>
                 <Header />
-                <AddNote props={this.handleAddNote} />
-                <Notes />
+                <AddBook handleAddBook={this.handleAddBook} />
+                <Books bookNotes={bookNotes} handleDeleteBook={this.handleDeleteBook} />
             </div>
         );
     };
