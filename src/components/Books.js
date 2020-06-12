@@ -12,7 +12,7 @@ export default class Books extends React.Component {
     render() {
         return (
             <div className="container" id="notes-panel">
-                <div className="container" id="notes-panel-header">
+                <div id="notes-panel-header">
                     <h3>Your BookNotes</h3>
                 </div>
                 <div className="container" id="notes-panel-body">

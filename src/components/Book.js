@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../styles/book.css';
+
 export default class Book extends React.Component {
     constructor(props) {
         super(props);
@@ -11,12 +13,13 @@ export default class Book extends React.Component {
 
     render() {
         return (
-            <div className="container">
-                <div className="row">
+            <div className="row justify-content-between" id="book-container">
+                <p id="book-title">
                     {this.props.bookNote.title}
-                    <button>View Book</button>
-                    <button onClick={this.removeBookNote}>Remove Book</button>
-                </div>
+                </p>
+                <button className="btn btn-primary">View Book</button>
+                <button className="btn btn-danger" onClick={this.removeBookNote}>Remove Book</button>
+                {/* <hr /> */}
             </div>
         );
     };

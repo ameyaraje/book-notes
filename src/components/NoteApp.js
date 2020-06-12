@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import AddBook from './AddBook';
 import Books from './Books';
+import BookModal from './BookModal';
 
 export default class NoteApp extends React.Component {
 
@@ -9,7 +10,8 @@ export default class NoteApp extends React.Component {
         super(props);
 
         this.state = {
-            bookNotes: []
+            bookNotes: [],
+            selectedBookNotes: {}
         };
     };
 
@@ -27,7 +29,7 @@ export default class NoteApp extends React.Component {
             console.log(error);
         }
     };
-    
+
     componentDidUpdate(prevProps, prevState) {
         if (prevState.bookNotes.length !== this.state.bookNotes.length) {
             const json = JSON.stringify(this.state.bookNotes);
@@ -64,6 +66,7 @@ export default class NoteApp extends React.Component {
                 <Header />
                 <AddBook handleAddBook={this.handleAddBook} />
                 <Books bookNotes={bookNotes} handleDeleteBook={this.handleDeleteBook} />
+                <BookModal />
             </div>
         );
     };

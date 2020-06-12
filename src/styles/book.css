@@ -1,0 +1,9 @@
+#book-container {
+    border-bottom: 1px solid;
+    padding: 3.2rem, 1.6rem;
+};
+
+#book-title {
+    font-weight: 500;
+    font-size: 3rem
+};
