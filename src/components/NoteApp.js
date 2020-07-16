@@ -64,7 +64,7 @@ export default class NoteApp extends React.Component {
         return (
             <div>
                 <Header />
-                <AddBook handleAddBook={this.handleAddBook} />
+                {/* <AddBook handleAddBook={this.handleAddBook} /> */}
                 <Books bookNotes={bookNotes} handleDeleteBook={this.handleDeleteBook} />
                 <BookModal />
             </div>
