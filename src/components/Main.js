@@ -4,25 +4,25 @@ import AddBook from './AddBook';
 import Books from './Books';
 import BookModal from './BookModal';
 
-export default class NoteApp extends React.Component {
+export default class Main extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            bookNotes: [],
-            selectedBookNotes: {}
+            books: [],
+            selectedBooks: {}
         };
     };
 
     componentDidMount() {
         try {
-            const json = localStorage.getItem('bookNotes');
-            const bookNotes = JSON.parse(json);
+            const json = localStorage.getItem('books');
+            const books = JSON.parse(json);
 
-            if (bookNotes) {
+            if (books) {
                 this.setState({
-                    bookNotes: bookNotes
+                    books: books
                 });
             }
         } catch (error) {
@@ -48,24 +48,24 @@ export default class NoteApp extends React.Component {
         });
     };
 
-    handleDeleteBook = (bookNoteToRemove) => {
+    handleDeleteBook = (bookToRemove) => {
         this.setState((prevState) => {
             return {
-                bookNotes: prevState.bookNotes.filter((bookNote) => {
-                    return bookNoteToRemove !== bookNote
+                books: prevState.books.filter((book) => {
+                    return bookToRemove !== book
                 })
             };
         });
     };
 
     render() {
-        const bookNotes = this.state.bookNotes;
+        const books = this.state.books;
 
         return (
             <div>
                 <Header />
                 {/* <AddBook handleAddBook={this.handleAddBook} /> */}
-                <Books bookNotes={bookNotes} handleDeleteBook={this.handleDeleteBook} />
+                <Books books={books} handleDeleteBook={this.handleDeleteBook} />
                 <BookModal />
             </div>
         );

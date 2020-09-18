@@ -16,10 +16,10 @@ export default class Books extends React.Component {
                     <h3>Your BookNotes</h3>
                 </div>
                 <div className="container" id="notes-panel-body">
-                   {this.props.bookNotes.length === 0 && <p>Add some book to get started</p>} 
-                   {this.props.bookNotes.map((bookNote) => {
+                   {this.props.books.length === 0 && <p>Add some book to get started</p>} 
+                   {this.props.books.map((book) => {
                        return (
-                           <Book key={bookNote.title} handleDeleteBook={this.props.handleDeleteBook} bookNote={bookNote} />
+                           <Book key={book.title} handleDeleteBook={this.props.handleDeleteBook} book={book} />
                        );
                    })}
                 </div>  
